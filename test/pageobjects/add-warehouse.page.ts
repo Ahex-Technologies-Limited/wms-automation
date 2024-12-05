@@ -1,13 +1,12 @@
 
 import Page from './page';
-import { $ ,browser} from '@wdio/globals';
+import { $, browser } from '@wdio/globals';
 class AddWarehousePage extends Page {
     // Selectors
-    public get noWarehouseText() { return $('/html/body/app-root/app-secondlayout/app-warehouse/div/div/div/div/h2'); }
-    public get addWarehouseButton() { return $('//button[contains(@class, "button_add") and @type="button"and contains(., "Add Warehouse")]'
-);}
-    public get addLaterLink() { return $('body > app-root > app-secondlayout > app-warehouse > div > div > div > div > a'); }
-    public get addWarehousePageHeader() { return $('body > app-root > app-layout > div > div > app-add-warehouse > form > div > div > div.form.col-12.p-0.column-gap-6 > div.col-12.p-0.header-warehouse.my-4 > h3'); }
+    public get noWarehouseText() { return $(`p[_ngcontent-ng-c435294142]`); }
+    public get addWarehouseButton() { return $('//button[contains(@class, "button_add") and @type="button"and contains(., "Add Warehouse")]'); }
+    public get addWarehousePageHeader() { return $(`h3.font-semibold.text-2xl.bg-color.m-0`); }
+    public get addLaterLink() { return $(`a.text-center.mt-3[href="#/admin/warehouse"]`); }
     public get sideBar() { return $('body > app-root > app-layout > div > app-sidebar'); }
     public get warehouseNameInput() { return $('#name'); }
     public get warehouseTypeSelect() { return $('#Warehousetype'); }
@@ -20,43 +19,36 @@ class AddWarehousePage extends Page {
     public get warehouseManagerSelect() { return $('body > app-root > app-layout > div > div > app-add-warehouse > form > div > div > div.form.col-12.p-0.column-gap-6 > div:nth-child(6) > div:nth-child(1) > div:nth-child(2)'); }
     public get phoneNumberInput() { return $('#contactPhone'); }
     public get emailInput() { return $('#email'); }
-    public get startTimeSelect() { return $(`//input[@type='text' and @role='combobox' and @placeholder='Select start time' and @id='calendar-timeonly']
-`); }
-    public get endTimeSelect() { return $(`//input[@type='text' and @role='combobox' and @placeholder='Select end time' and @id='calendar-timeonly']
-`); }
+    public get startTimeSelect() { return $(`//input[@type='text' and @role='combobox' and @placeholder='Select start time' and @id='calendar-timeonly']`); }
+    public get endTimeSelect() { return $(`//input[@type='text' and @role='combobox' and @placeholder='Select end time' and @id='calendar-timeonly']`); }
     public get timeZoneSelect() { return $('#timeZone > span'); }
-    public get selectMeasurementUnits() { return $(`//p-dropdown[@formcontrolname='measurement_unit']
-`); }
+    public get selectMeasurementUnits() { return $(`//p-dropdown[@formcontrolname='measurement_unit']`); }
     public get capacityInput() { return $(`//*[@id='firstname2'][@placeholder='Enter capacity']`); }
     public get specialEquipmentInput() { return $('#specialEquipment > div > ul > li > input'); }
     public get temperatureControlSelect() { return $('#temperatureControl > div'); }
     public get dockCountInput() { return $('#dockingStations'); }
     public get securityFeaturesInput() { return $(`//*[@type='text'][@placeholder='Enter security features']`); }
-    public get unitOfMeasurementSelect() { return $(`//p-multiselect[@optionlabel='name' and @optionvalue='id' and @formcontrolname='unit_of_measure_ids' and @placeholder='Select a unit of measurement' and @name='uom']
-        `); }
-    public get pickTaskTypeSelect() { return $(`p-dropdown[placeholder="Select pick task type"]
-`); }
-    public get statusTypeSelect() { return $(`p-dropdown[placeholder="Select Status"]
-`); }
-    public get addButton() { return $(`//button[@type='submit' and contains(text(),'Add')]
-`); }
-    public get backButton() { return $('ontent-center.items-center > div:nth-child(1) > button'); }
-    public get warehouseList() { return $(''); }
-    public  warehouseListItem(name: string) { return $(`selector-for-warehouse-list-item[name="${name}"]`); }
+    public get unitOfMeasurementSelect() { return $(`//p-multiselect[@optionlabel='name' and @optionvalue='id' and @formcontrolname='unit_of_measure_ids' and @placeholder='Select a unit of measurement' and @name='uom']`); }
+    public get pickTaskTypeSelect() { return $(`p-dropdown[placeholder="Select pick task type"]`); }
+    public get statusTypeSelect() { return $(`p-dropdown[placeholder="Select Status"]`); }
+    public get addButton() { return $(`//button[@type='submit' and contains(text(),'Add')]`); }
+    public get backButton() { return $(`button.p-element.button_back.flex.justify-content-center.items-center`); }
+    public get warehouseList() { return $(`app-warhouse-list .table-parents .wharehouse-list`); }
+    public warehouseListItem(name: string) { return $(`selector-for-warehouse-list-item[name="${name}"]`); }
 
     // Methods
-   
+
 
     public async isNoWarehouseTextDisplayed(): Promise<boolean> {
         return await this.noWarehouseText.isDisplayed();
     }
 
-    public async  clickAddWarehouseButton(): Promise<void> {
-        await  this.addWarehouseButton.waitForDisplayed({
-            timeout: 20000, 
+    public async clickAddWarehouseButton(): Promise<void> {
+        await this.addWarehouseButton.waitForDisplayed({
+            timeout: 20000,
             timeoutMsg: 'Element was not visible after 5 seconds'
         });
-       
+
         await this.addWarehouseButton.click();
     }
 
@@ -77,12 +69,12 @@ class AddWarehousePage extends Page {
     }
 
     public async selectWarehouseType(type: string): Promise<void> {
-       
+
         await this.warehouseTypeSelect.click();
         const typeOption = `//*[@id='Warehousetype_list']//li[@aria-label='${type}']`;
         console.log(typeOption);
-await browser.$(typeOption).click();
-       // await this.warehouseTypeSelect.selectByVisibleText(type);
+        await browser.$(typeOption).click();
+        // await this.warehouseTypeSelect.selectByVisibleText(type);
     }
 
     public async enterDescription(description: string): Promise<void> {
@@ -111,9 +103,9 @@ await browser.$(typeOption).click();
 
     public async selectWarehouseManager(manager: string): Promise<void> {
         await this.warehouseManagerSelect.click();
-        const typeOption = `//*[@id='manager_list']//li[@aria-label='${manager}']`;
+        const typeOption = `#manager_0`;
         console.log(typeOption);
-await browser.$(typeOption).click();
+        await browser.$(typeOption).click();
         //await this.warehouseManagerSelect.selectByVisibleText(manager);
     }
 
@@ -127,19 +119,19 @@ await browser.$(typeOption).click();
 
     public async selectStartTime(startTime: string): Promise<void> {
         await this.startTimeSelect.setValue("12:30");
-//        const typeOption = `//*[@id='pn_id_16_panel']//div[@aria-label='${startTime}']`;
+        //        const typeOption = `//*[@id='pn_id_16_panel']//div[@aria-label='${startTime}']`;
 
-//        console.log(typeOption);
-//  await browser.$(typeOption).click();
+        //        console.log(typeOption);
+        //  await browser.$(typeOption).click();
         //await this.startTimeSelect.selectByVisibleText(startTime);
     }
 
     public async selectEndTime(endTime: string): Promise<void> {
         await this.endTimeSelect.setValue('12:40');
-    //      const typeOption = `//*[@id='pn_id_17_panel']//div[@aria-label='${endTime}']`;
-    //   console.log(typeOption);
-    // await browser.$(typeOption).click();
-    //    // await this.endTimeSelect.selectByVisibleText(endTime);
+        //      const typeOption = `//*[@id='pn_id_17_panel']//div[@aria-label='${endTime}']`;
+        //   console.log(typeOption);
+        // await browser.$(typeOption).click();
+        //    // await this.endTimeSelect.selectByVisibleText(endTime);
     }
 
     public async selectTimeZone(timeZone: string): Promise<void> {
@@ -152,19 +144,19 @@ await browser.$(typeOption).click();
     public async selectMeasurementUnit(measurementunits: string): Promise<void> {
         await this.selectMeasurementUnits.scrollIntoView();
         await this.selectMeasurementUnits.click();
-        await browser.keys('ArrowDown');  
-        await browser.keys('Enter');  
+        await browser.keys('ArrowDown');
+        await browser.keys('Enter');
         //const typeOption = `//*[@id='pn_id_19_list']//li[@aria-label='${measurementunits}']`;
         //const typeOption = `#pn_id_19_3 span`;
 
-// //add wait time here to wait for the element to be displayed
-//  const measurementUnitElement = await browser.$(typeOption);
-// await measurementUnitElement.waitForDisplayed({
-//      timeout: 20000,
-//      timeoutMsg: 'Element was not visible after 5 seconds'
-//  });
-       // console.log(typeOption);
-       // await browser.$(typeOption).click();
+        // //add wait time here to wait for the element to be displayed
+        //  const measurementUnitElement = await browser.$(typeOption);
+        // await measurementUnitElement.waitForDisplayed({
+        //      timeout: 20000,
+        //      timeoutMsg: 'Element was not visible after 5 seconds'
+        //  });
+        // console.log(typeOption);
+        // await browser.$(typeOption).click();
         //await this.timeZoneSelect.selectByVisibleText(timeZone);
     }
 
@@ -207,26 +199,27 @@ await browser.$(typeOption).click();
         await this.pickTaskTypeSelect.click();
         await browser.keys('ArrowDown');
         await browser.keys('Enter');
-    //     await this.pickTaskTypeSelect.click();
-    //    const typeOption = `//*[@id='pn_id_20_list']//li[@aria-label='${taskType}']`;
-//          const pickTasktypElement = await browser.$(typeOption);
-//  await pickTasktypElement.waitForDisplayed({
-//     timeout: 20000,
-//     timeoutMsg: 'Element was not visible after 5 seconds'
-//  });
-    //console.log(typeOption);
-     //await browser.$(typeOption).click();
+        //     await this.pickTaskTypeSelect.click();
+        //    const typeOption = `//*[@id='pn_id_20_list']//li[@aria-label='${taskType}']`;
+        //          const pickTasktypElement = await browser.$(typeOption);
+        //  await pickTasktypElement.waitForDisplayed({
+        //     timeout: 20000,
+        //     timeoutMsg: 'Element was not visible after 5 seconds'
+        //  });
+        //console.log(typeOption);
+        //await browser.$(typeOption).click();
         //await this.pickTaskTypeSelect.selectByVisibleText(taskType);
     }
     public async selectStatusType(statusType: string): Promise<void> {
         await this.statusTypeSelect.click();
         await browser.keys('ArrowDown');
+        await browser.keys('ArrowUp');
         await browser.keys('Enter');
-//         const typeOption = `//*[@id='pn_id_25_list']//li[@aria-label='${statusType}']
+        //         const typeOption = `//*[@id='pn_id_25_list']//li[@aria-label='${statusType}']
 
-// `;
-//         console.log(typeOption);
-//         await browser.$(typeOption).click();
+        // `;
+        //         console.log(typeOption);
+        //         await browser.$(typeOption).click();
         //await this.pickTaskTypeSelect.selectByVisibleText(taskType);
     }
 
@@ -245,8 +238,8 @@ await browser.$(typeOption).click();
     public async isWarehouseInList(name: string): Promise<boolean> {
         return await this.warehouseListItem(name).isDisplayed();
     }
-    public async isAddButtonEnabled(): Promise<boolean> {                                                                                          
-        return await this.addButton.isEnabled();                                                                                                 
+    public async isAddButtonEnabled(): Promise<boolean> {
+        return await this.addButton.isEnabled();
     }
 
     public async addWarehouse(
@@ -295,7 +288,7 @@ await browser.$(typeOption).click();
         await this.selectPickTaskType(pickTaskType);
         await this.clickAddButton();
     }
-   
+
 }
 
 export default new AddWarehousePage();

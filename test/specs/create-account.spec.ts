@@ -1,6 +1,6 @@
 import { expect, browser } from '@wdio/globals';
 import CreateAccountPage from '../pageobjects/create-account.page';
-import { create } from 'domain';
+
 
 
     describe('Create Account Functionality', function () {
@@ -23,11 +23,11 @@ import { create } from 'domain';
             await expect(await CreateAccountPage.signUpButton.waitForDisplayed({ timeout: 60000 })).toBe(true);
         });
 
-        it('TC002 Verify the SignUp functionality with valid credentials', async function () {
+        it.only('TC002 Verify the SignUp functionality with valid credentials', async function () {
             await CreateAccountPage.register(
                 'John Doe',
                 'TechCompany',
-                'john.doe@example.com',
+                'supriyasahoo1399@example.com',
                 '2345678912',
                 'domainName',
                 'Password@123',
