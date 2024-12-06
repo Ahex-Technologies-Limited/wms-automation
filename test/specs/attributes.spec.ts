@@ -11,7 +11,7 @@ describe('Attributes functionality', () => {
     after(async () => {
         await browser.deleteCookies();
     });
-    it.only('TC001 Verify that after clicking on the add button the user should be able to add a new attribute', async () => {
+    it('TC001 Verify that after clicking on the add button the user should be able to add a new attribute', async () => {
         await WarehouseListPage.selectWarehousecardname.click();
         await attributesListPage.clickOperationSideBar();
         await attributesListPage.clickAttributesSideBar();
@@ -82,6 +82,19 @@ describe('Attributes functionality', () => {
         await attributesListPage.clickAttributesSideBar();
         await attributesListPage.clickDeleteButton();
         await attributesListPage.clickNoButton();
+        await browser.waitUntil(
+            async () => await attributesListPage.isAttributeListDisplayed(),
+            {
+                timeout: 5000,
+                timeoutMsg: 'Expected role list to be displayed'
+            }
+        );
+    });
+    it.only('TC006 Verify that the user should be able to change the status of the attribute', async () => {
+        await WarehouseListPage.selectWarehousecardname.click();
+        await attributesListPage.clickOperationSideBar();
+        await attributesListPage.clickAttributesSideBar();
+        await attributesListPage.changeStatus('Active');
         await browser.waitUntil(
             async () => await attributesListPage.isAttributeListDisplayed(),
             {

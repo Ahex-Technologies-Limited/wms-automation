@@ -18,6 +18,7 @@ class attributesListPage extends Page {
     public get yesButton() { return $(`//*[@type='button'  and contains(@class, 'p-element button_yes')]`) };
     public get noButton() { return $(`//*[@type='button'  and contains(@class, 'p-element button_no')]`) };
     public get deleteMessage() { return $(`//div[contains(@class, 'p-toast-message') and contains(@class, 'p-toast-message-success')]`) };
+    public get status() { return $(`//*[contains(text(),' Attribute 10 ')]//ancestor::td/following-sibling::td//*[@class='p-dropdown p-component p-inputwrapper']`) };
     //Methods
     public async clickAttributesList() { await (await this.attributesList).click(); }
     public async clickOperationSideBar() { await (await this.operationSideBar).click(); }
@@ -39,6 +40,12 @@ class attributesListPage extends Page {
     public async isAttributeDisplayed() { return await (await this.attributesList).isDisplayed(); }
     public async isAttributeEditDisplayed() { return await (await this.editButton).isDisplayed(); }
     public async isAttributeListDisplayed() { return await (await this.attributesList).isDisplayed(); }
+public async changeStatus(status: string) { 
+    await (await this.status).click(); 
+    const statusOption = await $(`//li[ @aria-label='${status}']`);
+    console.log(statusOption);
+    await statusOption.click();
 
+}
 }
 export default new attributesListPage();
