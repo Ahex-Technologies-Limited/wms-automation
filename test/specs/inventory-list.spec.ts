@@ -85,7 +85,7 @@ describe('Inventory-List Functionality', () => {
             }
         );
     });
-    it.only('TC005 Verify that the user should be able to view details of a inventory', async () => {
+    it('TC005 Verify that the user should be able to view details of a inventory', async () => {
         await WarehouseListPage.selectWarehousecardname.click();
         await InventoryListPage.clickOnProductManagementSubMenu();
         await InventoryListPage.clickOnInventoryListSideBar();
@@ -99,7 +99,7 @@ describe('Inventory-List Functionality', () => {
             }
         );
     });
-    it('TC006 Verify that the user should be able to clear the filter', async () => {
+    it.only('TC006 Verify that the user should be able to clear the filter', async () => {
         await WarehouseListPage.selectWarehousecardname.click();
         await InventoryListPage.clickOnProductManagementSubMenu();
         await InventoryListPage.clickOnInventoryListSideBar();
