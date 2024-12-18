@@ -105,8 +105,7 @@ class InventoryListPage extends Page {
     }
     public async selectSku(sku: string) {
         await (await this.sku).click();
-        const skuOption = await $(`//li[@role='option' and span[contains(text(), '${sku}')]]    
-`);
+        const skuOption = await $(`//li[@role='option' and span[contains(text(), '${sku}')]]`);
         console.log(skuOption);
         await skuOption.click();
     }

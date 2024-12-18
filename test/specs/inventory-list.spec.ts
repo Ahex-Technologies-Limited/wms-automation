@@ -34,7 +34,7 @@ describe('Inventory-List Functionality', () => {
             }
         );
     });
-    it('TC002 Verify that the user should be able to search for a inventory', async () => {
+    it.only('TC002 Verify that the user should be able to search for a inventory', async () => {
         await WarehouseListPage.selectWarehousecardname.click();
         await InventoryListPage.clickOnProductManagementSubMenu();
         await InventoryListPage.clickOnInventoryListSideBar();
@@ -90,7 +90,6 @@ describe('Inventory-List Functionality', () => {
         await InventoryListPage.clickOnProductManagementSubMenu();
         await InventoryListPage.clickOnInventoryListSideBar();
         await InventoryListPage.clickViewButton();
-   
         await browser.waitUntil(
             async () => await InventoryListPage.isDetailsInventoryPageDisplayed(),
             {
