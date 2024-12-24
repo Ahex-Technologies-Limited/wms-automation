@@ -1,3 +1,7 @@
+import { getWebCapabilities } from "./test/config/web";
+import yargs from 'yargs';
+const { argv } = yargs(process.argv);
+
 export const config: WebdriverIO.Config = {
     //
     // ====================
@@ -53,9 +57,20 @@ export const config: WebdriverIO.Config = {
     //
     capabilities: [{
         // capabilities for local browser web tests
-        browserName: 'chrome' // or "firefox", "microsoftedge", "safari"
+        browserName: 'chrome',
+        'goog:chromeOptions':{args:[
+            'disable-dev-shm-usage',
+            'disable-extensions',
+            'disable-gpu',
+            'disable-infobars',
+            'ignore-certificate-errors',
+            'no-sandbox',
+            'window-size=1920,1080',
+            '--disable-site-isolation-trials',
+            
+          ]}
     }],
-
+baseUrl:'http://143.244.132.143:8200',
     //
     // ===================
     // Test Configurations
@@ -63,7 +78,7 @@ export const config: WebdriverIO.Config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'debug',
     //
     // Set specific log levels per logger
     // loggers:
@@ -90,7 +105,7 @@ export const config: WebdriverIO.Config = {
     // baseUrl: 'http://localhost:8080',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 30000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -187,6 +202,7 @@ export const config: WebdriverIO.Config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
+
     // before: function (capabilities, specs) {
     // },
     /**
@@ -228,7 +244,7 @@ export const config: WebdriverIO.Config = {
      * @param {number}  result.duration  duration of test
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
-     */
+     *
     // afterTest: function(test, context, { error, result, duration, passed, retries }) {
     // },
 
