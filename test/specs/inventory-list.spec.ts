@@ -1,7 +1,7 @@
 import LoginPage from '../pageobjects/log-in.page';
 import WarehouseListPage from '../pageobjects/warehouse-list.page';
 import { expect } from '@wdio/globals';
-import productListPage from '../pageobjects/product-list.page';
+
 import { browser } from '@wdio/globals';
 import InventoryListPage from '../pageobjects/inventory-list.page';
 describe('Inventory-List Functionality', () => {
@@ -13,7 +13,7 @@ describe('Inventory-List Functionality', () => {
     after(async () => {
         await browser.deleteCookies();
     });
-    it('TC001 Verify that after clicking on the add button the user should be able to add a new inventory', async () => {
+    it.only('TC001 Verify that after clicking on the add button the user should be able to add a new inventory', async () => {
         await WarehouseListPage.selectWarehousecardname.click();
         await InventoryListPage.clickOnProductManagementSubMenu();
         await InventoryListPage.clickOnInventoryListSideBar();
@@ -34,7 +34,7 @@ describe('Inventory-List Functionality', () => {
             }
         );
     });
-    it.only('TC002 Verify that the user should be able to search for a inventory', async () => {
+    it('TC002 Verify that the user should be able to search for a inventory', async () => {
         await WarehouseListPage.selectWarehousecardname.click();
         await InventoryListPage.clickOnProductManagementSubMenu();
         await InventoryListPage.clickOnInventoryListSideBar();
@@ -59,7 +59,7 @@ describe('Inventory-List Functionality', () => {
         await costPrice.setValue('200');
         const sellingPrice = await $(`//input[@formcontrolname='sales_price' and @type='number']`);
         await sellingPrice.clearValue();
-        await sellingPrice.setValue('200');
+        await sellingPrice.setValue('700');
         await InventoryListPage.clickUpdateButton();
         await browser.waitUntil(
             async () => await InventoryListPage.isInventoryListPageDisplayed(),
@@ -98,7 +98,7 @@ describe('Inventory-List Functionality', () => {
             }
         );
     });
-    it.only('TC006 Verify that the user should be able to clear the filter', async () => {
+    it('TC006 Verify that the user should be able to clear the filter', async () => {
         await WarehouseListPage.selectWarehousecardname.click();
         await InventoryListPage.clickOnProductManagementSubMenu();
         await InventoryListPage.clickOnInventoryListSideBar();
