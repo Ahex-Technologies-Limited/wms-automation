@@ -1,4 +1,4 @@
-import LoginPage from '../pageobjects/login.page';
+import LoginPage from '../pageobjects/log-in.page';
 import WarehouseListPage from '../pageobjects/warehouse-list.page';
 import { expect } from '@wdio/globals';
 
@@ -14,7 +14,7 @@ describe('Labellings functionality', () => {
     after(async () => {
         await browser.deleteCookies();
     });
-    it.only('TC001 Verify that after clicking on the add button the user should be able to add a new labelling', async () => {
+    it('TC001 Verify that after clicking on the add button the user should be able to add a new labelling', async () => {
         await WarehouseListPage.selectWarehousecardname.click();
         await labellingsPage.clickOnLabelSideBar();
         await labellingsPage.clickOnAddLabelButton();
@@ -31,32 +31,31 @@ describe('Labellings functionality', () => {
             async () => await labellingsPage.isLabelListDisplayed(),
             {
                 timeout: 5000,
-                timeoutMsg: 'Expected role list to be displayed'
+                timeoutMsg: 'Expected labelling list to be displayed'
             }
         );
     });
     it('TC002 Verify that the user should be able to search for a labelling', async () => {
         await WarehouseListPage.selectWarehousecardname.click();
         await labellingsPage.clickOnLabelSideBar();
-        await labellingsPage.clickOnLabelList();
         await labellingsPage.enterInSearchBar('SKU');
         await browser.waitUntil(
-            async () => await labellingsPage.isLabelListDisplayed(),
+            async () => await labellingsPage.isLabelPageDisplayed(),
             {
                 timeout: 5000,
-                timeoutMsg: 'Expected role list to be displayed'
+                timeoutMsg: 'Expected labelling list to be displayed'
             }
         );
     });
-    it('TCoo3 Verify that the user should be able to change the status of the labellings', async () => {
+    it('TC003 Verify that the user should be able to change the status of the labellings', async () => {
         await WarehouseListPage.selectWarehousecardname.click();
         await labellingsPage.clickOnLabelSideBar();
         await labellingsPage.selectStatus();
         await browser.waitUntil(
-            async () => await labellingsPage.isLabelListDisplayed(),
+            async () => await labellingsPage.isLabelPageDisplayed(),
             {
                 timeout: 5000,
-                timeoutMsg: 'Expected role list to be displayed'
+                timeoutMsg: 'Expected labelling list to be displayed'
             }
         );
     });
@@ -70,10 +69,10 @@ describe('Labellings functionality', () => {
         await labellingsPage.selectSeparator(); 
         await labellingsPage.clickOnDeleteIcon();
         await browser.waitUntil(
-            async () => await labellingsPage.istmplatePageDisplayed(),
+            async () => await labellingsPage.istemplatePageDisplayed(),
             {
                 timeout: 5000,
-                timeoutMsg: 'Expected role list to be displayed'
+                timeoutMsg: 'Expected labelling list to be displayed'
             }
         );
     });
@@ -85,25 +84,25 @@ describe('Labellings functionality', () => {
         await labellingsPage.clickOnApplyButton();
      
         await browser.waitUntil(
-            async () => await labellingsPage.isLabelListDisplayed(),
+            async () => await labellingsPage.isLabelPageDisplayed(),
             {
                 timeout: 5000,
-                timeoutMsg: 'Expected role list to be displayed'
+                timeoutMsg: 'Expected labelling list to be displayed'
             }
         );
     });
-    it('TC006 Verify that the user should be able to clear the filter', async () => {
+    it.only('TC006 Verify that the user should be able to clear the filter', async () => {
         await WarehouseListPage.selectWarehousecardname.click();
         await labellingsPage.clickOnLabelSideBar();
         await labellingsPage.clickOnFilterButton();
         await labellingsPage.selectFilterStatus('Active');
-        await labellingsPage.clickOnFilterButton();
+       
         await labellingsPage.clickOnClearButton();
         await browser.waitUntil(
-            async () => await labellingsPage.isLabelListDisplayed(),
+            async () => await labellingsPage.isLabelPageDisplayed(),
             {
                 timeout: 5000,
-                timeoutMsg: 'Expected role list to be displayed'
+                timeoutMsg: 'Expected labelling list to be displayed'
             }
         );
     });

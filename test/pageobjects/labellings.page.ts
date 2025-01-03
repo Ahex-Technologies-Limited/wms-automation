@@ -132,7 +132,7 @@ class labellingsPage extends page {
     public async isLabelListDisplayed() {
         return (await this.labellist).isDisplayed();
     }
-    public async istmplatePageDisplayed() {
+    public async istemplatePageDisplayed() {
         const templatePage = $(`//span[contains(@class, 'ml-2') and normalize-space(text())='Template']`);
         return await templatePage.isDisplayed();
     }
