@@ -63,147 +63,145 @@ class supplerManagementPage extends page {
         return $(`(//div//button[contains(@class, 'button_back ') and normalize-space(text())='Back'])[1]`);
     }
     public get addressLine1() {
-        return $(``);
+        return $(`(//textarea[@formcontrolname='address_line1'])[1]`);
     }
     public get addressLine2() {
-        return $(``);
+        return $(`(//textarea[@formcontrolname='address_line2'])[1]`);
     }
-
-
     public get country() {
-        return $(``);
+        return $(`(//div[contains(@id, 'contactPhonecode')]//span[contains(normalize-space(text()), 'Select')])[1]`);
     }
     public get state() {
-        return $(``);
+        return $(`(//input[@formcontrolname='state'])[1]`);
     }
     public get city() {
-        return $(``);
+        return $(`(//input[@formcontrolname='city'])[1]`);
     }
     public get pinCode() {
-        return $(``);
+        return $(`(//input[@formcontrolname='postal_code'])[1]`);
     }
     public get markAsMailingAddressCheckbox() {
-        return $(``);
+        return $(`(//div[@class='p-checkbox-box' and @data-pc-section='input' and @data-p-highlight='false'])[1]`);
     }
     public get MailingAddressLine1() {
-        return $(``);
+        return $(`(//textarea[@formcontrolname='address_line1'])[1]`);
     }
     public get MailingAddressLine2() {
-        return $(``);
+        return $(`(//textarea[@formcontrolname='address_line2'])[1]`);
     }
     public get MailingCountry() {
-        return $(``);
+        return $(`(//span[@role='combobox' and @aria-label='Select' and contains(@class, 'p-dropdown-label')])[2]`);
     }
     public get MailingState() {
-        return $(``);
+        return $(`(//input[@formcontrolname='state'])[2`);
     }
 
     public get MailingCity() {
-        return $(``);
+        return $(`(//input[@formcontrolname='city'])[2]`);
     }
     public get MailingPinCode() {
-        return $(``);
+        return $(`(//input[@formcontrolname='postal_code'])[2]`);
     }
     public get addMailingAddressLink() {
-        return $(``);
+        return $(`//span[contains(text(), 'Add Mailing Address')]`);
     }
     public get deleteIconInMailingAddress() {
-        return $(``);
+        return $(`(//div[contains(@class, 'remove-icon')])[1]`);
     }
     public get nextButtonInSupplierAddress() {
-        return $(``);
+        return $(`(//button[contains(@class, 'button_add')])[2]`);
     }
     public get backButtonInSupplierAddress() {
-        return $(``);
+        return $(`(//button[contains(@class, 'button_back')])[2]`);
     }
     public get markAsPrimarycheckboxInFinancialInfo() {
-        return $(``);
+        return $(`(//p-checkbox[@formcontrolname='is_primary']//input[@type='checkbox'])[2]`);
     }
     public get benificiaryName() {
-        return $(``);
+        return $(`//input[@formcontrolname='beneficiary_name']`);
     }
     public get bankAccountNumber() {
-        return $(``);
+        return $(`//input[@formcontrolname='account_number']`);
     }
     public get bankName() {
 
-        return $(``);
+        return $(`//input[@formcontrolname='bank_name']`);
     }
     public get bankAddress() {
-        return $(``);
+        return $(`//input[@formcontrolname='bank_address']`);
     }
     public get bankBranchCode() {
-        return $(``);
+        return $(`//input[@formcontrolname='branch_code']`);
     }
     public get IBAN() {
-        return $(``);
+        return $(`//input[@formcontrolname='iban']`);
     }
     public get swiftCode() {
-        return $(``);
+        return $(`//input[@formcontrolname='swift_code']`);
     }
     public get addAccountLink() {
-        return $(``);
+        return $(`//button//span[text()='Add Account']`);
     }
     public get nextButtonInSupplierFinancialInfo() {
-        return $(``);
+        return $(`(//button[contains(@class, 'button_add')])[3]`);
     }
     public get backButtonInSupplierFinancialInfo() {
-        return $(``);
+        return $(`(//button[contains(@class, 'button_back ')])[3]`);
     }
     public get deleteIconInFinancialInfo() {
-        return $(``);
+        return $(`(//div[contains(@class, 'remove-icon')]//i[contains(@class, 'pi-trash')])[2]`);
     }
     public get startDate() {
-        return $(``);
+        return $(`(//input[@placeholder='Select date' and @role='combobox'])[1]`);
     }
     public get endDate() {
-        return $(``);
+        return $(`(//input[@placeholder='Select date' and @role='combobox'])[2]`);
     }
     public get description() {
-        return $(``);
+        return $(`//textarea[@formcontrolname='description']`);
     }
     public get sku() {
-        return $(``);
+        return $(`(//span[@role='combobox' and @aria-label='Select' and @aria-haspopup='listbox'])[2]`);
     }
     public get name() {
-        return $(``);
+        return $(`//input[@formcontrolname='name' and @readonly and @placeholder='Enter']`);
     }
     public get catagory() {
 
-        return $(``);
+        return $(`//input[@formcontrolname='category']`);
     }
     public get subCatagory() {
-        return $(``);
+        return $(`//input[@formcontrolname='sub_category']`);
     }
     public get salesPrice() {
-        return $(``);
+        return $(`//input[@formcontrolname='sales_price']`);
     }
     public get discount() {
-        return $(``);
+        return $(`//input[@formcontrolname='discount_percentage']`);
     }
     public get removeIcon() {
-        return $(``);
+        return $(`(//i[contains(@class, 'pi-trash') and contains(@class, 'text-red')])[2]`);
     }
     public get addItemLink() {
-        return $(``);
+        return $(`//button[@label='Add item' and @icon='pi pi-plus']`);
     }
     public get uploadAnnexuresOrAttachments() {
-        return $(``);
+        return $(`(//input[@aria-label='Browse Files'])[1]`);
     }
     public get uploadSupplierAgreement() {
-        return $(``);
+        return $(`(//input[@aria-label='Browse Files'])[2]`);
     }
     public get uploadProofOfSigningAuthority() {
-        return $(``);
+        return $(`(//input[@aria-label='Browse Files'])[3]`);
     }
     public get nextButtonInContactInfo() {
-        return $(``);
+        return $(`(//button[@type='submit'])[4]`);
     }
     public get backButtonInContactInfo() {
-        return $(``);
+        return $(`(//button[@type='button'])[9]`);
     }
     public get addButtonInComplianceAndDocumentation() {
-        return $(``);
+        return $(`(//button[normalize-space(text())='Add'])[1]`);
     }
 
     //Methods
@@ -230,7 +228,7 @@ class supplerManagementPage extends page {
     }
     public async selectCountryCode(countryCode: string) {
         await (await this.countryCode).click();
-        const countryCodeElement = await $(``);
+        const countryCodeElement = await $(`//li[@aria-label='${countryCode}']`);
         console.log(countryCodeElement);
         await countryCodeElement.click();
     }
@@ -242,13 +240,13 @@ class supplerManagementPage extends page {
     }
     public async selectCurrency(currency: string) {
         await (await this.currency).click();
-        const currencyElement = await $(``);
+        const currencyElement = await $(`//li[@aria-label='${currency}']`);
         console.log(currencyElement);
         await currencyElement.click();
     }
     public async selectPaymentMethods(paymentMethods: string) {
         await (await this.paymentMethods).click();
-        const paymentMethodsElement = await $(``);
+        const paymentMethodsElement = await $(`//li[@aria-label='${paymentMethods}']`);
         console.log(paymentMethodsElement);
         await paymentMethodsElement.click();
 
@@ -264,7 +262,7 @@ class supplerManagementPage extends page {
     }
     public async selectPrimaryContactCountryCode(primaryContactCountryCode: string) {
         await (await this.primaryContactCountryCode).click();
-        const primaryContactCountryCodeElement = await $(``);
+        const primaryContactCountryCodeElement = await $(`//li[@aria-label='${primaryContactCountryCode}']`);
         console.log(primaryContactCountryCodeElement);
         await primaryContactCountryCodeElement.click();
     }
@@ -288,15 +286,12 @@ class supplerManagementPage extends page {
     }
     public async selectCountry(country: string) {
         await (await this.country).click();
-        const countryElement = await $(``);
+        const countryElement = await $(`//li[@aria-label='${country}']`);
         console.log(countryElement);
         await countryElement.click();
     }
-    public async selectState(state: string) {
-        await (await this.state).click();
-        const stateElement = await $(``);
-        console.log(stateElement);
-        await stateElement.click();
+    public async enterState(state: string) {
+        await (await this.state).setValue(state);
     }
     public async enterCity(city: string) {
         await (await this.city).setValue(city);
@@ -315,15 +310,12 @@ class supplerManagementPage extends page {
     }
     public async selectMailingCountry(MailingCountry: string) {
         await (await this.MailingCountry).click();
-        const MailingCountryElement = await $(``);
+        const MailingCountryElement = await $(`//li[@aria-label='${MailingCountry}']`);
         console.log(MailingCountryElement);
         await MailingCountryElement.click();
     }
-    public async selectMailingState(MailingState: string) {
-        await (await this.MailingState).click();
-        const MailingStateElement = await $(``);
-        console.log(MailingStateElement);
-        await MailingStateElement.click();
+    public async enterMailingState(MailingState: string) {
+        await (await this.MailingState).setValue(MailingState);
     }
     public async enterMailingCity(MailingCity: string) {
         await (await this.MailingCity).setValue(MailingCity);
@@ -382,13 +374,13 @@ class supplerManagementPage extends page {
     public async selectStartDate(startDate: string) {
         await (await this.startDate).click();
 
-        const startDateElement = await $(``);
+        const startDateElement = await $(`//span[@data-date='${startDate}']`);
         console.log(startDateElement);
         await startDateElement.click();
     }
     public async selectEndDate(endDate: string) {
         await (await this.endDate).click();
-        const endDateElement = await $(``);
+        const endDateElement = await $(`//span[@data-date='${endDate}']`);
         console.log(endDateElement);
         await endDateElement.click();
 
@@ -398,7 +390,7 @@ class supplerManagementPage extends page {
     }
     public async selectSku(sku: string) {
         await (await this.sku).click();
-        const skuElement = await $(``);
+        const skuElement = await $(`//li[@aria-label='${sku}']`);
         console.log(skuElement);
         await skuElement.click();
 

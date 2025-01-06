@@ -1,5 +1,5 @@
-import LoginPage from "../pageobjects/login.page";
 
+import LoginPage from '../pageobjects/log-in.page';
 import WarehouseListPage from "../pageobjects/warehouse-list.page";
 import incomingshipmentsListPage from "../pageobjects/incomingshipments-list.page";
 import { browser } from '@wdio/globals';
