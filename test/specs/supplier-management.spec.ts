@@ -28,6 +28,7 @@ it("TC001 Verify that Supplier Management page is displayed", async () => {
 
 });
 it("TC002 Verify that after clicking on the Add button the user should be able to add a new supplier", async () => {
+    await SupplierManagementPage.clickOnSupplierManagementSideBar();
     await SupplierManagementPage.clickOnAddSupplierButton();
     await SupplierManagementPage.enterSupplierName("Test Supplier");
     await SupplierManagementPage.enterSupplierEmail("2s4Qc@example.com");
@@ -80,6 +81,41 @@ it("TC002 Verify that after clicking on the Add button the user should be able t
 
 });
 it("TC003 Verify that after clicking on the edit button the user should be able to edit the Suppllier details", async () =>{
-
+    await SupplierManagementPage.clickOnSupplierManagementSideBar();
+    await SupplierManagementPage.clickOnEditIcon();
+    await SupplierManagementPage.enterSupplierName("Updated Supplier");
+    await SupplierManagementPage.clickOnUpdateButton();
+    await browser.waitUntil(
+        async () => await SupplierManagementPage.isSupplierPageDisplayed(),
+        {
+            timeout: 5000,
+            timeoutMsg: 'Expected role list to be displayed'
+        }
+    );
+ 
 });
+it("TC004 Verify that after clicking on the view button the user should be able to view the selected supplier details", async () => {
+    await SupplierManagementPage.clickOnSupplierManagementSideBar();
+    await SupplierManagementPage.clickOnViewIcon();
+    await browser.waitUntil(
+        async () => await SupplierManagementPage.isSupplierPageDisplayed(),
+        {
+            timeout: 5000,
+            timeoutMsg: 'Expected role list to be displayed'
+        }
+    );
 
+})
+it ("TC005 Verify that after clicking on the searchbar the user should be able to search for a supplier", async () => {
+    await SupplierManagementPage.clickOnSupplierManagementSideBar();
+    await SupplierManagementPage.enterInSearchBar("Supplier");
+    
+  
+    await browser.waitUntil(
+        async () => await SupplierManagementPage.isSupplierPageDisplayed(),
+        {
+            timeout: 5000,
+            timeoutMsg: 'Expected role list to be displayed'
+        }
+    );
+});

@@ -13,6 +13,13 @@ class supplerManagementPage extends page {
     public get searchBar() {
         return $(`//input[@type='text' and contains(@class, 'search-input')]`);
     }
+    public get editIcon () {
+        return $(`(//i[contains(@class, 'pi-pencil') and contains(@class, 'text-success')])[1]`);
+    }
+    public get viewIcon () {
+        
+        return $(`(//button[contains(@class, 'dropdown-item') and contains(@class, 'ng-star-inserted') and .//i[contains(@class, 'pi-eye')]])[1]`);
+    }
     public get addSupplierButton() {
         return $(`//button[@label='Add' and span[contains(text(), 'Add')]]`);
     }
@@ -446,7 +453,18 @@ class supplerManagementPage extends page {
     public async isSupplierPageDisplayed() {
         return (await this.supplierPage).isDisplayed();
     }
+    public async  clickOnEditIcon() {
+        await (await this.editIcon).click();
 
+    }
+public async clickOnViewIcon() {
+    await (await this.viewIcon).click();
+}
+public async clickOnUpdateButton() {
+    const updateButton = await $(`(//button[contains(@class, 'button_add') and contains(@class, 'p-button') and text()[normalize-space()='Update']])[1]`);
 
+    await updateButton.click();
+
+}
 }
 export default new supplerManagementPage();
