@@ -76,7 +76,7 @@ class supplerManagementPage extends page {
         return $(`(//textarea[@formcontrolname='address_line2'])[1]`);
     }
     public get country() {
-        return $(`(//div[contains(@id, 'contactPhonecode')]//span[contains(normalize-space(text()), 'Select')])[1]`);
+        return $(`(//p-dropdown[@formcontrolname='country'])[1]`);
     }
     public get state() {
         return $(`(//input[@formcontrolname='state'])[1]`);
@@ -91,16 +91,16 @@ class supplerManagementPage extends page {
         return $(`(//div[@class='p-checkbox-box' and @data-pc-section='input' and @data-p-highlight='false'])[1]`);
     }
     public get MailingAddressLine1() {
-        return $(`(//textarea[@formcontrolname='address_line1'])[1]`);
+        return $(`(//textarea[@formcontrolname='address_line1'])[2]`);
     }
     public get MailingAddressLine2() {
-        return $(`(//textarea[@formcontrolname='address_line2'])[1]`);
+        return $(`(//textarea[@formcontrolname='address_line2'])[2]`);
     }
     public get MailingCountry() {
-        return $(`(//span[@role='combobox' and @aria-label='Select' and contains(@class, 'p-dropdown-label')])[2]`);
+        return $(`(//p-dropdown[@formcontrolname='country'])[2]`);
     }
     public get MailingState() {
-        return $(`(//input[@formcontrolname='state'])[2`);
+        return $(`(//input[@formcontrolname='state'])[2]`);
     }
 
     public get MailingCity() {
@@ -122,7 +122,7 @@ class supplerManagementPage extends page {
         return $(`(//button[contains(@class, 'button_back')])[2]`);
     }
     public get markAsPrimarycheckboxInFinancialInfo() {
-        return $(`(//p-checkbox[@formcontrolname='is_primary']//input[@type='checkbox'])[2]`);
+        return $(`//div[@class='p-checkbox-box' and @data-p-highlight='false' and @data-p-focused='false']`);
     }
     public get benificiaryName() {
         return $(`//input[@formcontrolname='beneficiary_name']`);
@@ -191,6 +191,10 @@ class supplerManagementPage extends page {
     }
     public get addItemLink() {
         return $(`//button[@label='Add item' and @icon='pi pi-plus']`);
+    }
+    public get uploadButton() {
+        
+        return $(`(//span[@class='p-button-label ng-star-inserted' and text()='Upload'])[1]`);
     }
     public get uploadAnnexuresOrAttachments() {
         return $(`(//input[@aria-label='Browse Files'])[1]`);
@@ -429,14 +433,17 @@ class supplerManagementPage extends page {
     public async clickOnAddItemLink() {
         await (await this.addItemLink).click();
     }
+    public async clickOnUploadButton(){
+        await(await this.uploadButton).click();
+    }
     public async clickOnUploadAnnexuresOrAttachments() {
-        await (await this.uploadAnnexuresOrAttachments).click();
+        await (await this.uploadAnnexuresOrAttachments).setValue('test\testdata\pexels-fauxels-3184454.jpg');   
     }
     public async clickOnUploadSupplierAgreement() {
-        await (await this.uploadSupplierAgreement).click();
+        await (await this.uploadSupplierAgreement).setValue('');
     }
     public async clickOnUploadProofOfSigningAuthority() {
-        await (await this.uploadProofOfSigningAuthority).click();
+        await (await this.uploadProofOfSigningAuthority).setValue('C:\Users\Ahex_Tech\Downloads\pexels-fauxels-3184454.jpg');
     }
     public async clickOnNextButtonInContactInfo() {
         await (await this.nextButtonInContactInfo).click();
@@ -466,5 +473,7 @@ public async clickOnUpdateButton() {
     await updateButton.click();
 
 }
+
+
 }
 export default new supplerManagementPage();

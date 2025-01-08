@@ -15,7 +15,7 @@ describe('Supplier Management Functionality', () => {
     after(async () => {
         await browser.deleteCookies();
     });
-});
+
 it("TC001 Verify that Supplier Management page is displayed", async () => {
     await SupplierManagementPage.clickOnSupplierManagementSideBar();
     await browser.waitUntil(
@@ -27,33 +27,35 @@ it("TC001 Verify that Supplier Management page is displayed", async () => {
     );
 
 });
-it("TC002 Verify that after clicking on the Add button the user should be able to add a new supplier", async () => {
+it.only("TC002 Verify that after clicking on the Add button the user should be able to add a new supplier", async () => {
     await SupplierManagementPage.clickOnSupplierManagementSideBar();
     await SupplierManagementPage.clickOnAddSupplierButton();
     await SupplierManagementPage.enterSupplierName("Test Supplier");
-    await SupplierManagementPage.enterSupplierEmail("2s4Qc@example.com");
-    await SupplierManagementPage.selectCountryCode("United States");
+    await SupplierManagementPage.enterSupplierEmail("test@gmail.com");
+    await SupplierManagementPage.selectCountryCode("+91");
     await SupplierManagementPage.enterSupplierPhoneNumber("1234567890");
     await SupplierManagementPage.enterTaxId("1234567890");
-    await SupplierManagementPage.selectCurrency("Indian Rupee");
+    await SupplierManagementPage.selectCurrency("Saudi Riyal");
     await SupplierManagementPage.selectPaymentMethods("Credit Card");
     await SupplierManagementPage.clickOnMarkAsPrimaryCheckbox();
     await SupplierManagementPage.enterPrimaryContactName("Test Contact");
-    await SupplierManagementPage.enterPrimaryContactEmail("2s4Qc@example.com");
-    await SupplierManagementPage.clickOnNextButtonInSupplierFinancialInfo();
+    await SupplierManagementPage.enterPrimaryContactEmail("test@gmail.com");
+    await SupplierManagementPage.clickOnNextButtonInSupplierInfo();
     await SupplierManagementPage.enterAddressLine1("Test Address");
     await SupplierManagementPage.enterAddressLine2("Test Address");
-    await SupplierManagementPage.selectCountry("Test State");
+    await SupplierManagementPage.selectCountry("Saudi Arabia");
     await SupplierManagementPage.enterState("Test State");
     await SupplierManagementPage.enterCity("Test City");
     await SupplierManagementPage.enterPinCode("875656");
+    await SupplierManagementPage.clickOnMarkAsMailingAddressCheckbox();
     await SupplierManagementPage.enterMailingAddressLine1("Test Address");
     await SupplierManagementPage.enterMailingAddressLine2("Test Address");
-    await SupplierManagementPage.selectMailingCountry("Test State");
+    await SupplierManagementPage.selectMailingCountry("Kuwait");
     await SupplierManagementPage.enterMailingState("Test State");
     await SupplierManagementPage.enterMailingCity("Test City");
     await SupplierManagementPage.enterMailingPinCode("875656");
     await SupplierManagementPage.clickOnNextButtonInSupplierAddress();
+    await SupplierManagementPage.clickOnMarkAsPrimarycheckboxInFinancialInfo();
     await SupplierManagementPage.enterBenificiaryName("Test Benificiary");
     await SupplierManagementPage.enterBankAccountNumber("1234567890");
     await SupplierManagementPage.enterBankName("Test Bank");
@@ -62,10 +64,12 @@ it("TC002 Verify that after clicking on the Add button the user should be able t
     await SupplierManagementPage.enterIBAN("1234567890");
     await SupplierManagementPage.enterSwiftCode("123456");
     await SupplierManagementPage.clickOnNextButtonInSupplierFinancialInfo();
-    await SupplierManagementPage.selectStartDate("02-12-2024");
-    await SupplierManagementPage.selectEndDate("09-12-2024");
+    await SupplierManagementPage.selectStartDate("2025-0-7");
+    await SupplierManagementPage.selectEndDate("2025-0-23");
     await SupplierManagementPage.enterDescription("Test Description");
     await SupplierManagementPage.selectSku("MmRaTzXEqs");
+    await SupplierManagementPage.enterDiscount("10%");
+    await SupplierManagementPage.clickOnUploadButton();
     await SupplierManagementPage.clickOnUploadAnnexuresOrAttachments();
     await SupplierManagementPage.clickOnUploadProofOfSigningAuthority();
     await SupplierManagementPage.clickOnUploadSupplierAgreement();
@@ -119,3 +123,5 @@ it ("TC005 Verify that after clicking on the searchbar the user should be able t
         }
     );
 });
+
+});  
